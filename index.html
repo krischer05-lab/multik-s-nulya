@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Курс «Мультик с нуля» от ozhivi: за 3 недели соберёшь свой мультик на нейросетях. Старт 28 октября.">
+<meta property="og:title" content="Мультик с нуля — курс ozhivi">
+<meta property="og:image" content="c13.jpg">
+<title>Мультик с нуля — курс ozhivi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Jost:wght@200;300;400;500;600&family=Marck+Script&display=swap">
+<style>
+/* Layout: loud editorial landing — tilted polaroids, ticker bands, phone-video cards, one black ticket block for prices */
+:root{
+  --bg:#f1f1f3; --surface:#ffffff; --ink:#131315; --muted:#6c6c73; --line:#dcdce0;
+  --pink:#e0508a; --pink-soft:#f3dbe5; --night:#131315; --on-night:#f4f4f6; --on-pink:#ffffff;
+  --tape:#e8b9cb; --lav:#ddd7f0; --peach:#f8dfcb; --sage:#d9e3d5;
+  --shadow:0 18px 40px -18px rgba(19,19,21,.3);
+  --display:"Abril Fatface","Playfair Display",Georgia,serif;
+  --script:"Marck Script","Segoe Script",cursive;
+  --sans:"Jost","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#17171a; --surface:#222227; --ink:#f4f4f6; --muted:#a8a8b1; --line:#34343b;
+  --pink:#ee6a9f; --pink-soft:#3b2531; --night:#0d0d0f; --tape:#7a4a5e;
+  --lav:#2d2a45; --peach:#3b2d27; --sage:#27322a;
+  --shadow:0 18px 40px -18px rgba(0,0,0,.75); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17171a; --surface:#222227; --ink:#f4f4f6; --muted:#a8a8b1; --line:#34343b;
+  --pink:#ee6a9f; --pink-soft:#3b2531; --night:#0d0d0f; --tape:#7a4a5e;
+  --lav:#2d2a45; --peach:#3b2d27; --sage:#27322a;
+  --shadow:0 18px 40px -18px rgba(0,0,0,.75); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;padding-inline:20px;padding-bottom:84px;overflow-x:hidden}
+.wrap{max-width:1080px;margin-inline:auto}
+a{color:inherit}
+img,video{max-width:100%}
+:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+
+/* logo: thin sans, the last "i" has a pink dot instead of the black one */
+.logo{display:inline-flex;align-items:baseline;font-family:var(--sans);font-weight:200;font-size:26px;letter-spacing:.3em;line-height:1;text-decoration:none;color:var(--ink);white-space:nowrap}
+.logo .i{display:inline-block;width:.04em;height:.47em;background:currentColor;position:relative;margin-left:.02em}
+.logo .i::before{content:"";position:absolute;left:50%;bottom:calc(100% + .075em);width:.15em;height:.15em;border-radius:50%;background:var(--pink);transform:translateX(-50%)}
+.logo-lock{display:inline-flex;flex-direction:column;gap:7px;text-decoration:none}
+.logo-lock small{font-family:var(--script);color:var(--pink);font-size:17px;letter-spacing:0;line-height:1;margin-left:2px}
+.logo.xl{font-size:clamp(54px,13vw,150px)}
+
+.eyebrow{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--pink);font-weight:500;margin:0 0 14px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;margin:0;text-wrap:balance}
+h2{font-size:clamp(36px,6.4vw,68px);text-transform:uppercase}
+.script{font-family:var(--script);color:var(--pink);font-weight:400;text-transform:none;letter-spacing:0}
+section{padding-block:clamp(48px,8vw,96px)}
+.btn{display:inline-block;background:var(--pink);color:var(--on-pink);text-decoration:none;font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:14px;padding:17px 30px;border-radius:999px;box-shadow:0 12px 26px -10px var(--pink);transition:transform .15s;border:0;cursor:pointer;font-family:var(--sans)}
+.btn:hover{transform:translateY(-2px) rotate(-1deg)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:none;border:1px solid var(--ink);padding:12px 22px;font-size:12px}
+.actions{display:grid;gap:10px}
+.btn.ask{background:transparent;color:var(--ink);border:1px solid currentColor;box-shadow:none;padding:14px 24px}
+.tariff.vip .btn.ask{background:transparent;color:var(--on-night);box-shadow:none;border:1px solid var(--on-night)}
+.sticker{display:inline-block;background:var(--pink);color:var(--on-pink);font-family:var(--script);font-size:21px;padding:6px 20px 8px;border-radius:999px;box-shadow:0 10px 22px -10px var(--pink);transform:rotate(-3deg)}
+
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:22px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center;padding-block:clamp(20px,4vw,48px) clamp(48px,7vw,88px)}
+h1{font-size:clamp(60px,11.5vw,132px);text-transform:uppercase;margin-top:20px}
+.hero .script{display:block;font-size:clamp(34px,6.4vw,68px);line-height:1.1;margin-top:10px}
+.lead{max-width:36ch;font-size:19px;color:var(--muted);margin:26px 0 26px}
+.cta-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.cta-row small{color:var(--muted);font-size:14px}
+.timer{display:inline-flex;gap:10px;align-items:stretch;margin:0 0 28px}
+.timer div{background:var(--night);color:var(--on-night);border-radius:14px;padding:10px 12px 8px;min-width:64px;text-align:center}
+.timer b{display:block;font-family:var(--display);font-weight:400;font-size:32px;line-height:1;font-variant-numeric:tabular-nums}
+.timer span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#b8b8c0}
+.timer-cap{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+
+.collage{position:relative;aspect-ratio:1/1.5;max-width:540px;width:100%;justify-self:center}
+.polaroid{position:absolute;margin:0;background:#fff;padding:10px 10px 28px;box-shadow:var(--shadow);width:56%}
+.polaroid img,.polaroid video{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;background:#e9e1d6}
+.polaroid::before{content:"";position:absolute;top:-12px;left:50%;width:34%;height:24px;background:var(--tape);opacity:.9;transform:translateX(-50%) rotate(-3deg);z-index:2}
+.polaroid figcaption{position:absolute;bottom:9px;left:0;right:0;text-align:center;font-family:var(--script);color:#444;font-size:18px}
+.p1{left:-3%;top:0;transform:rotate(-10deg)}
+.p2{right:-3%;top:21%;transform:rotate(9deg);z-index:2}
+.p3{left:23%;bottom:0;transform:rotate(-4deg);z-index:3;width:54%}
+.spark{position:absolute;color:var(--pink);font-size:34px;z-index:4;line-height:1}
+
+/* ticker */
+.ticker{margin-inline:-20px;overflow:hidden;background:var(--pink);color:var(--on-pink);padding:14px 0;transform:rotate(-1.4deg);box-shadow:0 14px 30px -16px var(--pink)}
+.ticker.alt{background:var(--night);color:var(--on-night);transform:rotate(1.2deg)}
+.ticker .track{display:flex;width:max-content;animation:run 32s linear infinite}
+.ticker span{font-family:var(--display);font-size:clamp(22px,3.4vw,34px);text-transform:uppercase;white-space:nowrap;padding-right:34px}
+.ticker span em{font-style:normal;font-family:var(--script);text-transform:none;opacity:.95}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* video reel: columns of two stacked 16:9 clips alternate with single 9:16 clips */
+.reel{--rh:440px;--g:14px;display:flex;align-items:center;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:30px 20px 30px;margin-inline:-20px;scrollbar-width:thin}
+.col{flex:none;display:flex;flex-direction:column;gap:var(--g);scroll-snap-align:center}
+.clip{position:relative;margin:0;border-radius:24px;overflow:hidden;background:#000;box-shadow:var(--shadow);border:5px solid var(--night)}
+.clip.h{height:calc((var(--rh) - var(--g))/2);width:calc((var(--rh) - var(--g))/2*16/9)}
+.clip.v{height:var(--rh);width:calc(var(--rh)*9/16)}
+.clip video{display:block;width:100%;height:100%;object-fit:cover}
+.clip figcaption{position:absolute;left:10px;bottom:10px;background:var(--surface);color:var(--ink);font-family:var(--script);font-size:17px;line-height:1;padding:4px 12px 6px;border-radius:999px}
+.col:nth-child(4n+1){transform:rotate(-1deg)}
+.col:nth-child(4n+2){transform:rotate(1.4deg)}
+.col:nth-child(4n+3){transform:rotate(1deg)}
+.col:nth-child(4n){transform:rotate(-1.4deg)}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--ink)}
+.fact{padding:26px 8px 24px 22px;border-left:1px solid var(--line)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(40px,6vw,64px);line-height:1}
+.fact span{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+/* audience + result */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px)}
+.list{list-style:none;padding:0;margin:26px 0 0}
+.list li{padding:16px 0;border-bottom:1px solid var(--line);display:flex;gap:14px}
+.list li::before{content:"✦";color:var(--pink);flex:none;font-size:14px;padding-top:4px}
+.result{align-self:start;background:var(--night);color:var(--on-night);border-radius:28px;padding:clamp(26px,4vw,44px);transform:rotate(1deg)}
+.result .eyebrow{margin-bottom:10px}
+.result h3{font-size:clamp(30px,4.4vw,46px);color:var(--pink);margin-bottom:22px}
+.result ul{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.result li{display:grid;grid-template-columns:90px 1fr;gap:4px 16px;align-items:baseline}
+.result li b{font-family:var(--display);font-weight:400;font-size:44px;line-height:1}
+.result li span{color:#c9c9d0}
+
+/* heroes gallery: scrolling strip of small cards */
+.strip-wrap{position:relative;margin-top:36px}
+.strip{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;padding:14px 20px 22px;margin-inline:-20px;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.cardc{flex:none;width:176px;margin:0;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:3/4;box-shadow:var(--shadow);scroll-snap-align:start;transition:transform .25s}
+.cardc img{width:100%;height:100%;object-fit:cover;display:block}
+.cardc figcaption{position:absolute;left:8px;bottom:8px;background:var(--surface);color:var(--ink);font-family:var(--script);font-size:16px;line-height:1;padding:3px 11px 5px;border-radius:999px}
+.cardc:nth-child(odd){transform:rotate(-1.6deg)}
+.cardc:nth-child(even){transform:rotate(1.6deg) translateY(10px)}
+.cardc:hover{transform:rotate(0) scale(1.04)}
+.arrow{position:absolute;top:42%;z-index:3;width:46px;height:46px;border-radius:50%;border:0;background:var(--pink);color:var(--on-pink);font-size:20px;cursor:pointer;box-shadow:0 8px 18px -8px var(--pink)}
+.arrow.prev{left:-8px}.arrow.next{right:-8px}
+.hint{font-family:var(--script);color:var(--pink);font-size:20px;margin:4px 0 0}
+
+/* program */
+.weeks{margin-top:44px;border-top:1px solid var(--ink)}
+.week{display:grid;grid-template-columns:230px 1fr;gap:12px 40px;padding:30px 0;border-bottom:1px solid var(--line)}
+.week h3{font-size:34px}
+.week .tag{font-family:var(--script);font-size:23px;color:var(--pink);display:block;margin-top:6px;line-height:1.1}
+.week .wk{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--pink);font-weight:500;display:block;margin-bottom:8px}
+.lessons{list-style:none;margin:0;padding:0}
+.lessons li{display:grid;grid-template-columns:44px 1fr;padding:11px 0;border-bottom:1px dashed var(--line);align-items:baseline}
+.lessons li:last-child{border-bottom:0}
+.lessons .n{color:var(--pink);font-weight:500;font-size:14px;letter-spacing:.12em;font-variant-numeric:tabular-nums}
+.lessons strong{font-weight:500;display:block}
+.lessons .d{color:var(--muted);font-size:15px}
+.week.first{background:var(--pink-soft);margin-inline:-20px;padding-inline:20px;border-radius:24px;border-bottom:0}
+.live{margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--pink-soft);padding:9px 16px;border-radius:18px;font-size:15px}
+.week.first .live{background:var(--surface)}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--pink);display:block;flex:none}
+.badge{font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--night);color:var(--on-night);padding:4px 10px;border-radius:999px;font-weight:500}
+
+/* format */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.card{border-radius:24px;padding:28px 26px 32px}
+.card h3{font-size:30px;margin-bottom:10px}
+.card p{margin:0;color:var(--ink);opacity:.75}
+.card:nth-child(1){background:var(--lav);transform:rotate(-1deg)}
+.card:nth-child(2){background:var(--peach);transform:rotate(.8deg)}
+.card:nth-child(3){background:var(--sage);transform:rotate(-.6deg)}
+
+/* tools */
+.tools{display:grid;grid-template-columns:repeat(3,1fr);margin-top:36px;border-top:1px solid var(--ink)}
+.tool{padding:20px 16px 20px 0;border-bottom:1px solid var(--line)}
+.tool b{font-weight:500;display:block;font-size:19px}
+.tool span{color:var(--muted);font-size:15px}
+.note{margin-top:26px;background:var(--pink-soft);border-left:4px solid var(--pink);padding:18px 22px;border-radius:0 16px 16px 0;max-width:62ch}
+
+/* tariffs */
+.start{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:28px 0 8px}
+.sticker.world{background:var(--night);color:var(--on-night);box-shadow:none;transform:rotate(2deg)}
+.seats{flex:1;min-width:260px;max-width:460px}
+.seats .meter{height:12px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:8px}
+.seats .meter i{display:block;height:100%;width:28%;background:var(--pink);border-radius:99px}
+.seats p{margin:0;display:flex;justify-content:space-between;font-size:15px}
+.tariffs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px;align-items:stretch}
+.tariff{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:30px 26px 28px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow)}
+.tariff h3{font-size:28px}
+.tariff .price{font-family:var(--display);font-size:clamp(44px,5.4vw,60px);line-height:1;color:var(--pink)}
+.tariff .price small{font-family:var(--sans);font-size:20px;color:var(--muted);margin-left:4px}
+.tariff ul{list-style:none;padding:0;margin:0 0 8px;display:grid;gap:10px;flex:1}
+.tariff li{display:flex;gap:10px}
+.tariff li::before{content:"✦";color:var(--pink);font-size:13px;padding-top:4px;flex:none}
+.tariff.mid{border:2px solid var(--pink)}
+.tariff.vip{background:var(--night);color:var(--on-night);border-color:var(--night)}
+.tariff.vip li{color:#d6d6dc}
+.tariff .btn{text-align:center}
+.tariff.vip .btn{background:var(--on-night);color:var(--night);box-shadow:none}
+
+/* faq */
+.faq{margin-top:36px;max-width:760px}
+details{border-bottom:1px solid var(--line);padding:6px 0}
+summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:500;font-size:19px;display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--pink);font-size:26px;line-height:1;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0 0 18px;color:var(--muted);max-width:60ch}
+
+/* brand outro */
+.outro{background:var(--night);color:var(--on-night);border-radius:34px;padding:clamp(40px,8vw,96px) clamp(20px,5vw,60px);text-align:center;display:grid;gap:18px;justify-items:center;overflow:hidden}
+.outro .logo{color:var(--on-night)}
+.outro .tagline{font-family:var(--script);color:var(--pink);font-size:clamp(28px,5vw,52px);line-height:1}
+.outro p{margin:0;color:#b8b8c0;max-width:40ch}
+footer{padding-block:34px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer .logo{font-size:20px}
+footer .legal{flex-basis:100%;margin:6px 0 0;color:var(--muted);font-size:13px;letter-spacing:.04em;line-height:1.6;text-transform:none}
+footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
+
+.modal{position:fixed;inset:0;z-index:50;background:rgba(10,10,12,.62);display:flex;align-items:center;justify-content:center;padding:20px}
+.modal[hidden]{display:none}
+.sheet{position:relative;background:var(--surface);color:var(--ink);border-radius:28px;padding:30px 26px 26px;width:100%;max-width:460px;display:grid;gap:12px;box-shadow:var(--shadow)}
+.sheet h3{font-size:32px}
+.sheet .sum{margin:0;font-family:var(--display);font-size:40px;color:var(--pink);line-height:1}
+.sheet .how{margin:4px 0 6px;color:var(--muted);font-size:15px}
+.sheet .close{position:absolute;right:14px;top:10px;width:38px;height:38px;border-radius:50%;border:0;background:var(--bg);color:var(--ink);font-size:24px;cursor:pointer;line-height:1}
+.opt{display:block;text-decoration:none;border:1.5px solid var(--ink);border-radius:18px;padding:14px 18px;transition:background .15s}
+.opt:hover{background:var(--pink-soft);border-color:var(--pink)}
+.opt b{display:block;font-weight:500;font-size:18px}
+.opt span{color:var(--muted);font-size:14px}
+
+/* sticky bar */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--night);color:var(--on-night);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap}
+.dock .t{font-size:14px;letter-spacing:.06em}
+.dock .t b{font-family:var(--display);font-weight:400;font-size:20px;color:var(--pink);font-variant-numeric:tabular-nums;margin-left:6px}
+.dock .btn{padding:11px 22px;font-size:12px;box-shadow:none}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .collage{order:-1;max-width:380px}
+  .facts{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--line)}
+  .two,.cards,.tariffs{grid-template-columns:1fr}
+  .card:nth-child(n),.result{transform:none}
+  .week{grid-template-columns:1fr}
+  .tools{grid-template-columns:1fr 1fr}
+  .reel{--rh:360px}
+}
+@media (max-width:480px){
+  body{font-size:16px}
+  .tools{grid-template-columns:1fr}
+  .btn{padding:16px 24px}
+  .timer div{min-width:58px;padding-inline:8px}
+  .bar .btn{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}.ticker .track{animation:none}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="bar">
+    <a class="logo-lock" href="#top" aria-label="ozhivi — оживи свою идею">
+      <span class="logo">ozhiv<span class="i"></span></span>
+      <small>оживи свою идею</small>
+    </a>
+    <a class="btn ghost" href="#tariffs">Записаться</a>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <span class="sticker">первый поток · старт 28 октября</span>
+        <h1>Мультик<br>с нуля</h1>
+        <span class="script">от идеи до ролика</span>
+        <p class="lead">За 3 недели соберёшь свой мультик на 30–60 секунд: нейросети, агенты-помощники, сценарий, герой, кадры, анимация, голос и монтаж.</p>
+        <p class="timer-cap">до старта потока</p>
+        <div class="timer" role="timer" aria-label="Время до старта">
+          <div><b data-t="d">00</b><span>дней</span></div>
+          <div><b data-t="h">00</b><span>часов</span></div>
+          <div><b data-t="m">00</b><span>минут</span></div>
+          <div><b data-t="s">00</b><span>секунд</span></div>
+        </div>
+        <div class="cta-row">
+          <a class="btn" href="#tariffs">Хочу на курс</a>
+          <a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a>
+          <small>рисовать уметь не нужно · оплата со всего мира</small>
+        </div>
+      </div>
+      <div class="collage">
+        <figure class="polaroid p1"><img src="n9.jpg" alt="Вязаный зелёный герой в розовом костюме и кроссовках" loading="eager"></figure>
+        <figure class="polaroid p2"><img src="n4.jpg" alt="Графичный плакатный портрет с красными губами" loading="eager"></figure>
+        <figure class="polaroid p3"><img src="c13.jpg" alt="Героиня с красной причёской-сердцем" loading="eager"></figure>
+        <span class="spark" style="right:2%;top:5%">✦</span>
+        <span class="spark" style="left:-2%;bottom:34%;font-size:24px">✦</span>
+        <span class="spark" style="right:6%;bottom:6%;font-size:26px">✦</span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="ticker" aria-hidden="true"><div class="track">
+  <span>Мультик с нуля <em>· старт 28 октября ·</em> 25 мест на поток <em>· оживи свою идею ·</em> </span>
+  <span>Мультик с нуля <em>· старт 28 октября ·</em> 25 мест на поток <em>· оживи свою идею ·</em> </span>
+  <span>Мультик с нуля <em>· старт 28 октября ·</em> 25 мест на поток <em>· оживи свою идею ·</em> </span>
+  <span>Мультик с нуля <em>· старт 28 октября ·</em> 25 мест на поток <em>· оживи свою идею ·</em> </span>
+</div></div>
+
+<div class="wrap">
+  <section>
+    <p class="eyebrow">Так выглядит результат</p>
+    <h2>Мультики,<br><span class="script">сделанные нейросетями</span></h2>
+    <div class="reel">
+      <div class="col"><figure class="clip h"><video src="v1.mp4" poster="v1.jpg" muted loop playsinline preload="metadata"></video><figcaption>кафе</figcaption></figure><figure class="clip h"><video src="h2.mp4" poster="h2.jpg" muted loop playsinline preload="metadata"></video><figcaption>дворец</figcaption></figure></div>
+      <div class="col"><figure class="clip v"><video src="v2.mp4" poster="v2.jpg" muted loop playsinline preload="metadata"></video><figcaption>у стены</figcaption></figure></div>
+      <div class="col"><figure class="clip v"><video src="v8.mp4" poster="v8.jpg" muted loop playsinline preload="metadata"></video><figcaption>ужин</figcaption></figure></div>
+      <div class="col"><figure class="clip h"><video src="h3.mp4" poster="h3.jpg" muted loop playsinline preload="metadata"></video><figcaption>переполох</figcaption></figure><figure class="clip h"><video src="h4.mp4" poster="h4.jpg" muted loop playsinline preload="metadata"></video><figcaption>за столиком</figcaption></figure></div>
+      <div class="col"><figure class="clip v"><video src="v9.mp4" poster="v9.jpg" muted loop playsinline preload="metadata"></video><figcaption>за столом</figcaption></figure></div>
+      <div class="col"><figure class="clip v"><video src="v3.mp4" poster="v3.jpg" muted loop playsinline preload="metadata"></video><figcaption>семья</figcaption></figure></div>
+      <div class="col"><figure class="clip v"><video src="v7.mp4" poster="v7.jpg" muted loop playsinline preload="metadata"></video><figcaption>крупный план</figcaption></figure></div>
+      <div class="col"><figure class="clip v"><video src="v4.mp4" poster="v4.jpg" muted loop playsinline preload="metadata"></video><figcaption>характер</figcaption></figure></div>
+    </div>
+  </section>
+
+  <div class="facts">
+    <div class="fact"><b>3</b><span>недели</span></div>
+    <div class="fact"><b>12</b><span>уроков</span></div>
+    <div class="fact"><b>3</b><span>живых эфира</span></div>
+    <div class="fact"><b>25</b><span>мест на поток</span></div>
+  </div>
+
+  <section>
+    <div class="two">
+      <div>
+        <p class="eyebrow">Для кого</p>
+        <h2>Если мультик<br><span class="script">давно в голове</span></h2>
+        <ul class="list">
+          <li>Есть идея или герой, но непонятно, с какого шага начать.</li>
+          <li>Пробуешь нейросети, а кадры выходят разными и не складываются в историю.</li>
+          <li>Хочешь вести блог с мультиками и показывать работы заказчикам.</li>
+          <li>Нужен порядок и люди рядом, чтобы дойти до готового ролика.</li>
+        </ul>
+      </div>
+      <aside class="result">
+        <p class="eyebrow">На выходе</p>
+        <h3>Ты уходишь с этим</h3>
+        <ul>
+          <li><b>1</b><span>готовый мультик на 30–60 секунд</span></li>
+          <li><b>2–3</b><span>работы в портфолио</span></li>
+          <li><b>30</b><span>дней: понятный план, что делать дальше</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+</div>
+
+<div class="ticker alt" aria-hidden="true"><div class="track">
+  <span>Герой <em>· сценарий ·</em> кадры <em>· анимация ·</em> голос <em>· монтаж ·</em> </span>
+  <span>Герой <em>· сценарий ·</em> кадры <em>· анимация ·</em> голос <em>· монтаж ·</em> </span>
+  <span>Герой <em>· сценарий ·</em> кадры <em>· анимация ·</em> голос <em>· монтаж ·</em> </span>
+  <span>Герой <em>· сценарий ·</em> кадры <em>· анимация ·</em> голос <em>· монтаж ·</em> </span>
+</div></div>
+
+<div class="wrap">
+  <section>
+    <p class="eyebrow">Галерея героев</p>
+    <h2>Придумаешь<br><span class="script">героя в любом стиле</span></h2>
+    <div class="strip-wrap">
+      <button class="arrow prev" type="button" aria-label="Назад">←</button>
+      <div class="strip" id="strip"><figure class="cardc"><img src="c7.jpg" alt="3D" loading="lazy"><figcaption>3D</figcaption></figure><figure class="cardc"><img src="n12.jpg" alt="концепт" loading="lazy"><figcaption>концепт</figcaption></figure><figure class="cardc"><img src="n3.jpg" alt="цветы" loading="lazy"><figcaption>цветы</figcaption></figure><figure class="cardc"><img src="n2.jpg" alt="как в кино" loading="lazy"><figcaption>как в кино</figcaption></figure><figure class="cardc"><img src="c12.jpg" alt="ворчун" loading="lazy"><figcaption>ворчун</figcaption></figure><figure class="cardc"><img src="n7.jpg" alt="карандаши" loading="lazy"><figcaption>карандаши</figcaption></figure><figure class="cardc"><img src="b4.jpg" alt="принц" loading="lazy"><figcaption>принц</figcaption></figure><figure class="cardc"><img src="x1.jpg" alt="парень" loading="lazy"><figcaption>парень</figcaption></figure><figure class="cardc"><img src="n11.jpg" alt="живопись" loading="lazy"><figcaption>живопись</figcaption></figure><figure class="cardc"><img src="n1.jpg" alt="карикатура" loading="lazy"><figcaption>карикатура</figcaption></figure><figure class="cardc"><img src="c4.jpg" alt="он" loading="lazy"><figcaption>он</figcaption></figure><figure class="cardc"><img src="x6.jpg" alt="в мехах" loading="lazy"><figcaption>в мехах</figcaption></figure><figure class="cardc"><img src="n14.jpg" alt="скетч" loading="lazy"><figcaption>скетч</figcaption></figure><figure class="cardc"><img src="x10.jpg" alt="свитер" loading="lazy"><figcaption>свитер</figcaption></figure></div>
+      <button class="arrow next" type="button" aria-label="Вперёд">→</button>
+    </div>
+    <p class="hint">листай → герои в разных стилях и из разных вселенных</p>
+  </section>
+
+  <section id="program">
+    <p class="eyebrow">Программа</p>
+    <h2>3 недели<br><span class="script">12 уроков</span></h2>
+    <div class="weeks">
+      <article class="week first">
+        <div><span class="wk">Неделя 1</span><h3>Старт</h3><span class="tag">нейросети, агенты, идея</span></div>
+        <div>
+          <ol class="lessons">
+            <li><span class="n">01</span><div><strong>Знакомство с нейросетями</strong><span class="d">как устроен курс, какие нейросети нужны, как они работают, куда нажимать и как правильно ими пользоваться</span></div></li>
+            <li><span class="n">02</span><div><strong>Создаём агентов и помощников</strong><span class="d">собираем своих ИИ-помощников, которые подсказывают на каждом шаге: от сценария до промптов</span></div></li>
+            <li><span class="n">03</span><div><strong>Идея и сценарий</strong><span class="d">превращаем мысль в историю на 30–60 секунд</span></div></li>
+            <li><span class="n">04</span><div><strong>Раскадровка</strong><span class="d">разбиваем сценарий на кадры, пока ничего не сгенерировано</span></div></li>
+          </ol>
+          <div class="live"><i></i>Эфир недели: разбор идей и сценариев <span class="badge">только с обратной связью</span></div>
+        </div>
+      </article>
+      <article class="week">
+        <div><span class="wk">Неделя 2</span><h3>Герой</h3><span class="tag">кадры и анимация</span></div>
+        <div>
+          <ol class="lessons">
+            <li><span class="n">05</span><div><strong>Персонаж и стиль</strong><span class="d">придумываем героя и фиксируем визуальный язык мультика</span></div></li>
+            <li><span class="n">06</span><div><strong>Консистентность</strong><span class="d">герой остаётся тем же в каждом кадре</span></div></li>
+            <li><span class="n">07</span><div><strong>Кадры</strong><span class="d">генерируем сцены в Midjourney, правим героев в Nano Banana</span></div></li>
+            <li><span class="n">08</span><div><strong>Анимация кадров</strong><span class="d">оживляем картинки в Seedance: действие, эмоция, камера</span></div></li>
+          </ol>
+          <div class="live"><i></i>Эфир недели: разбор героев и анимации</div>
+        </div>
+      </article>
+      <article class="week">
+        <div><span class="wk">Неделя 3</span><h3>Сборка</h3><span class="tag">звук и монтаж</span></div>
+        <div>
+          <ol class="lessons">
+            <li><span class="n">09</span><div><strong>Голос и интонации</strong><span class="d">озвучиваем героя в Fish Audio так, чтобы ему верили</span></div></li>
+            <li><span class="n">10</span><div><strong>Музыка и звук</strong><span class="d">атмосфера, ритм и эффекты</span></div></li>
+            <li><span class="n">11</span><div><strong>Монтаж</strong><span class="d">собираем сцены, голос и музыку в один ролик в CapCut</span></div></li>
+            <li><span class="n">12</span><div><strong>Публикация и план на 30 дней</strong><span class="d">куда выложить и что делать после курса</span></div></li>
+          </ol>
+          <div class="live"><i></i>Эфир недели: просмотр готовых мультиков</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Как проходит</p>
+    <h2>Видео и <span class="script">комьюнити</span></h2>
+    <div class="cards">
+      <div class="card"><h3>Видеоуроки</h3><p>Короткие уроки по 20–30 минут: удобно смотреть и легко усваивать. Смотришь в своём темпе и сразу повторяешь на своём герое.</p></div>
+      <div class="card"><h3>Креативное комьюнити</h3><p>Общий чат единомышленников: показываешь кадры, задаёшь вопросы, вдохновляешься чужими работами и находишь своих.</p></div>
+      <div class="card"><h3>Живые эфиры</h3><p>Раз в неделю встречаемся в эфире. Разбор идей и сценариев доступен на тарифах с обратной связью.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Инструменты</p>
+    <h2>Что <span class="script">понадобится</span></h2>
+    <div class="tools">
+      <div class="tool"><b>ChatGPT или Claude</b><span>идея, сценарий, раскадровка, промпты, агенты</span></div>
+      <div class="tool"><b>Midjourney</b><span>кадры</span></div>
+      <div class="tool"><b>Nano Banana</b><span>правки героев</span></div>
+      <div class="tool"><b>Seedance</b><span>анимация кадров</span></div>
+      <div class="tool"><b>Fish Audio</b><span>голос и интонации</span></div>
+      <div class="tool"><b>CapCut</b><span>монтаж, музыка, титры</span></div>
+    </div>
+    <p class="note"><strong>Инструменты меняются быстро.</strong> На курсе учим принципу, а не кнопкам. Тарифы и лимиты сервисов проверяй в их актуальной версии.</p>
+  </section>
+
+  <section id="tariffs">
+    <p class="eyebrow">Запись на поток</p>
+    <h2>Выбери<br><span class="script">свой тариф</span></h2>
+    <div class="start">
+      <span class="sticker">старт 28 октября</span>
+      <span class="sticker world">оплата со всего мира</span>
+      <div class="seats">
+        <p><span>Занято 7 из 25 мест</span><b>осталось 18</b></p>
+        <div class="meter" role="img" aria-label="Занято 7 из 25 мест"><i></i></div>
+      </div>
+    </div>
+    <div class="tariffs">
+      <div class="tariff">
+        <h3>Самостоятельный</h3>
+        <div class="price">15 000<small>₽</small></div>
+        <ul>
+          <li>Все видеоуроки курса</li>
+          <li>Обучение в своём темпе</li>
+          <li>Без домашних заданий и проверки работ</li>
+        </ul>
+        <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="Самостоятельный" data-price="15 000">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
+      </div>
+      <div class="tariff mid">
+        <h3>С обратной связью</h3>
+        <div class="price">20 000<small>₽</small></div>
+        <ul>
+          <li>Всё из тарифа «Самостоятельный»</li>
+          <li>Домашние задания по урокам</li>
+          <li>Проверка домашних заданий лично автором курса</li>
+          <li>Эфир с разбором идей и сценариев</li>
+        </ul>
+        <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="С обратной связью" data-price="20 000">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
+      </div>
+      <div class="tariff vip">
+        <h3>Личное сопровождение</h3>
+        <div class="price">50 000<small>₽</small></div>
+        <ul>
+          <li>Всё из тарифа «С обратной связью»</li>
+          <li>Индивидуальное сопровождение на всём пути</li>
+          <li>Личная работа над твоим мультиком</li>
+        </ul>
+        <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="Личное сопровождение" data-price="50 000">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <p class="eyebrow">Вопросы</p>
+    <h2>Частые <span class="script">вопросы</span></h2>
+    <div class="faq">
+      <details><summary>Нужно ли уметь рисовать или монтировать?</summary><p>Нет. Курс идёт с нуля: от знакомства с нейросетями до готового ролика. Рисунок заменяют нейросети, а монтаж проходим в простом приложении CapCut.</p></details>
+      <details><summary>Сервисы платные?</summary><p>Часть сервисов работает по подписке. Какие тарифы нужны для твоего мультика, подскажем в первых уроках, чтобы не платить лишнего.</p></details>
+      <details><summary>Что если сервис изменится во время курса?</summary><p>Основа не меняется: сценарий, раскадровка, единый герой, анимация, звук, монтаж. Если интерфейс поменялся, мы покажем, как сделать то же самое в новой версии.</p></details>
+      <details><summary>Что, если я пропущу эфир?</summary><p>Эфиры можно пересмотреть, а вопросы по ним задать в общем чате.</p></details>
+      <details><summary>Чем отличаются тарифы?</summary><p>«Самостоятельный» даёт видеоуроки без проверки работ. В «С обратной связью» есть домашние задания, и их лично проверяет автор курса. «Личное сопровождение» подразумевает индивидуальную работу над твоим мультиком.</p></details>
+      <details><summary>Что будет в конце?</summary><p>Готовый мультик на 30–60 секунд, 2–3 работы для портфолио и план на 30 дней, чтобы не бросить после курса.</p></details>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="outro">
+      <span class="logo xl">ozhiv<span class="i"></span></span>
+      <span class="tagline">оживи свою идею</span>
+      <p>Старт потока 28 октября. 25 мест, 7 уже заняты. Оплата со всего мира.</p>
+      <div class="actions"><a class="btn" href="#tariffs">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener" style="color:var(--on-night)">Задать вопрос</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="logo">ozhiv<span class="i"></span></span>
+    <span class="tagline">оживи свою идею</span>
+    <p class="legal">Самозанятая Искорцева Кристина Александровна<br>ИНН 224502182906</p>
+  </footer>
+</div>
+
+
+<div class="modal" id="pay" role="dialog" aria-modal="true" aria-labelledby="pay-title" hidden>
+  <div class="sheet">
+    <button class="close" type="button" aria-label="Закрыть">×</button>
+    <p class="eyebrow">Оплата</p>
+    <h3 id="pay-title">Тариф</h3>
+    <p class="sum" id="pay-sum"></p>
+    <p class="how">Выбери, откуда платишь. Откроется Telegram, и я пришлю реквизиты для оплаты.</p>
+    <a class="opt" id="pay-ru" href="https://t.me/iskor_kris" target="_blank" rel="noopener"><b>Я из России</b><span>оплата на российскую карту, в рублях</span></a>
+    <a class="opt" id="pay-world" href="https://t.me/iskor_kris" target="_blank" rel="noopener"><b>Я не из России</b><span>оплата на зарубежную карту или криптой</span></a>
+  </div>
+</div>
+
+<div class="dock">
+  <span class="t">До старта <b data-dock>—</b></span>
+  <a class="btn" href="#tariffs">Записаться</a>
+</div>
+
+<script>
+(function(){
+  var target=new Date("2026-10-28T00:00:00+03:00").getTime();
+  var els={d:document.querySelector('[data-t="d"]'),h:document.querySelector('[data-t="h"]'),m:document.querySelector('[data-t="m"]'),s:document.querySelector('[data-t="s"]')};
+  var dock=document.querySelector('[data-dock]');
+  function p(n){return n<10?"0"+n:""+n}
+  function tick(){
+    var diff=Math.max(0,target-Date.now());
+    var d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);
+    els.d.textContent=p(d);els.h.textContent=p(h);els.m.textContent=p(m);els.s.textContent=p(s);
+    dock.textContent=d+" д "+p(h)+":"+p(m)+":"+p(s);
+  }
+  tick();setInterval(tick,1000);
+
+  var strip=document.getElementById("strip");
+  if(strip){
+    var step=function(dir){strip.scrollBy({left:dir*540,behavior:"smooth"})};
+    document.querySelector(".arrow.prev").addEventListener("click",function(){step(-1)});
+    document.querySelector(".arrow.next").addEventListener("click",function(){step(1)});
+  }
+
+  var pay=document.getElementById("pay");
+  if(pay){
+    var close=function(){pay.hidden=true};
+    var tg=function(txt){return "https://t.me/iskor_kris?text="+encodeURIComponent(txt)};
+    document.querySelectorAll(".btn.pay").forEach(function(b){
+      b.addEventListener("click",function(e){
+        e.preventDefault();
+        var n=b.dataset.name,p=b.dataset.price;
+        document.getElementById("pay-title").textContent=n;
+        document.getElementById("pay-sum").textContent=p+" ₽";
+        var base="Здравствуйте! Хочу оплатить курс «Мультик с нуля», тариф «"+n+"» ("+p+" ₽). ";
+        document.getElementById("pay-ru").href=tg(base+"Оплачиваю из России.");
+        document.getElementById("pay-world").href=tg(base+"Оплачиваю не из России.");
+        pay.hidden=false;
+      });
+    });
+    pay.addEventListener("click",function(e){if(e.target===pay)close()});
+    pay.querySelector(".close").addEventListener("click",close);
+    document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
+  }
+
+  var vids=document.querySelectorAll("video");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var v=e.target;
+        if(e.isIntersecting){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else{v.pause()}
+      });
+    },{threshold:.35});
+    vids.forEach(function(v){io.observe(v)});
+  } else {
+    vids.forEach(function(v){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})});
+  }
+})();
+</script>
+
+</body>
+</html>
