@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Курс «Мультик с нуля» от ozhivi: за 3 недели соберёшь свой мультик на нейросетях. Старт 28 октября.">
+<meta name="description" content="Курс «Мультик с нуля» от ozhivi: за 3 недели соберёшь свой мультик на нейросетях. Старт 28 октября. Скидка 20%.">
 <meta property="og:title" content="Мультик с нуля — курс ozhivi">
 <meta property="og:image" content="c13.jpg">
 <title>Мультик с нуля — курс ozhivi</title>
@@ -186,6 +186,9 @@ h1{font-size:clamp(60px,11.5vw,132px);text-transform:uppercase;margin-top:20px}
 .tariff{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:30px 26px 28px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow)}
 .tariff h3{font-size:28px}
 .tariff .price{font-family:var(--display);font-size:clamp(44px,5.4vw,60px);line-height:1;color:var(--pink)}
+.tariff .was{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.tariff .price s{font-family:var(--sans);font-size:22px;color:var(--muted);line-height:1}
+.tariff .price em.off{font-style:normal;font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.08em;background:var(--pink);color:var(--on-pink);border-radius:99px;padding:3px 11px}
 .tariff .price small{font-family:var(--sans);font-size:20px;color:var(--muted);margin-left:4px}
 .tariff ul{list-style:none;padding:0;margin:0 0 8px;display:grid;gap:10px;flex:1}
 .tariff li{display:flex;gap:10px}
@@ -299,10 +302,10 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
 </div>
 
 <div class="ticker" aria-hidden="true"><div class="track">
-  <span>Мультик с нуля <em>· старт 28 октября ·</em> 25 мест на поток <em>· оживи свою идею ·</em> </span>
-  <span>Мультик с нуля <em>· старт 28 октября ·</em> 25 мест на поток <em>· оживи свою идею ·</em> </span>
-  <span>Мультик с нуля <em>· старт 28 октября ·</em> 25 мест на поток <em>· оживи свою идею ·</em> </span>
-  <span>Мультик с нуля <em>· старт 28 октября ·</em> 25 мест на поток <em>· оживи свою идею ·</em> </span>
+  <span>Мультик с нуля <em>· старт 28 октября ·</em> скидка 20% <em>· 25 мест на поток ·</em> оживи свою идею <em>·</em> </span>
+  <span>Мультик с нуля <em>· старт 28 октября ·</em> скидка 20% <em>· 25 мест на поток ·</em> оживи свою идею <em>·</em> </span>
+  <span>Мультик с нуля <em>· старт 28 октября ·</em> скидка 20% <em>· 25 мест на поток ·</em> оживи свою идею <em>·</em> </span>
+  <span>Мультик с нуля <em>· старт 28 октября ·</em> скидка 20% <em>· 25 мест на поток ·</em> оживи свою идею <em>·</em> </span>
 </div></div>
 
 <div class="wrap">
@@ -445,32 +448,34 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
     <div class="start">
       <span class="sticker">старт 28 октября</span>
       <span class="sticker world">оплата со всего мира</span>
+      <span class="sticker">скидка 20% на два тарифа</span>
       <div class="seats">
         <p><span>Занято 7 из 25 мест</span><b>осталось 18</b></p>
         <div class="meter" role="img" aria-label="Занято 7 из 25 мест"><i></i></div>
       </div>
     </div>
+    <p class="hint" style="margin:18px 0 0">скидка 20% действует на тарифы «Самостоятельный» и «С обратной связью»</p>
     <div class="tariffs">
       <div class="tariff">
         <h3>Самостоятельный</h3>
-        <div class="price">15 000<small>₽</small></div>
+        <div class="price"><div class="was"><s>15 000</s><em class="off">−20%</em></div><span>12 000</span><small>₽</small></div>
         <ul>
           <li>Все видеоуроки курса</li>
           <li>Обучение в своём темпе</li>
           <li>Без домашних заданий и проверки работ</li>
         </ul>
-        <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="Самостоятельный" data-price="15 000">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
+        <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="Самостоятельный" data-price="12 000" data-old="15 000">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
       </div>
       <div class="tariff mid">
         <h3>С обратной связью</h3>
-        <div class="price">20 000<small>₽</small></div>
+        <div class="price"><div class="was"><s>20 000</s><em class="off">−20%</em></div><span>16 000</span><small>₽</small></div>
         <ul>
           <li>Всё из тарифа «Самостоятельный»</li>
           <li>Домашние задания по урокам</li>
           <li>Проверка домашних заданий лично автором курса</li>
           <li>Эфир с разбором идей и сценариев</li>
         </ul>
-        <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="С обратной связью" data-price="20 000">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
+        <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="С обратной связью" data-price="16 000" data-old="20 000">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
       </div>
       <div class="tariff vip">
         <h3>Личное сопровождение</h3>
@@ -562,8 +567,8 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
         e.preventDefault();
         var n=b.dataset.name,p=b.dataset.price;
         document.getElementById("pay-title").textContent=n;
-        document.getElementById("pay-sum").textContent=p+" ₽";
-        var base="Здравствуйте! Хочу оплатить курс «Мультик с нуля», тариф «"+n+"» ("+p+" ₽). ";
+        document.getElementById("pay-sum").textContent=p+" ₽"+(b.dataset.old?" · скидка 20%":"");
+        var old=b.dataset.old;var base="Здравствуйте! Хочу оплатить курс «Мультик с нуля», тариф «"+n+"» ("+p+" ₽"+(old?" со скидкой 20%, вместо "+old+" ₽":"")+"). ";
         document.getElementById("pay-ru").href=tg(base+"Оплачиваю из России.");
         document.getElementById("pay-world").href=tg(base+"Оплачиваю не из России.");
         pay.hidden=false;
