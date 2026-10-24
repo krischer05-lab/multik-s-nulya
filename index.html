@@ -529,8 +529,8 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
     <p class="eyebrow">Оплата</p>
     <h3 id="pay-title">Тариф</h3>
     <p class="sum" id="pay-sum"></p>
-    <p class="how">Выбери, откуда платишь. Откроется Telegram, и я пришлю реквизиты для оплаты.</p>
-    <a class="opt" id="pay-ru" href="https://t.me/iskor_kris" target="_blank" rel="noopener"><b>Я из России</b><span>оплата на российскую карту, в рублях</span></a>
+    <p class="how">Выбери, откуда платишь. Из России откроется страница оплаты, в ней укажи сумму тарифа. Для оплаты из-за рубежа откроется Telegram, и я пришлю реквизиты.</p>
+    <a class="opt" id="pay-ru" href="https://ozhivi-svoyu-ideyu.payform.ru" target="_blank" rel="noopener"><b>Я из России</b><span>оплата российской картой, в рублях</span></a>
     <a class="opt" id="pay-world" href="https://t.me/iskor_kris" target="_blank" rel="noopener"><b>Я не из России</b><span>оплата на зарубежную карту или криптой</span></a>
   </div>
 </div>
@@ -570,9 +570,8 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
         e.preventDefault();
         var n=b.dataset.name,p=b.dataset.price;
         document.getElementById("pay-title").textContent=n;
-        document.getElementById("pay-sum").textContent=p+" ₽"+(b.dataset.old?" · скидка 20%":"");
-        var old=b.dataset.old;var base="Здравствуйте! Хочу оплатить курс «Мультик с нуля», тариф «"+n+"» ("+p+" ₽"+(old?" со скидкой 20%, вместо "+old+" ₽":"")+"). ";
-        document.getElementById("pay-ru").href=tg(base+"Оплачиваю из России.");
+        document.getElementById("pay-sum").textContent="Сумма к оплате: "+p+" ₽";
+        var base="Здравствуйте! Хочу оплатить курс «Мультик с нуля», тариф «"+n+"» ("+p+" ₽). ";
         document.getElementById("pay-world").href=tg(base+"Оплачиваю не из России.");
         pay.hidden=false;
       });
