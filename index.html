@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Курс «Мультик с нуля» от ozhivi: за 3 недели соберёшь свой мультик на нейросетях. Старт сразу после оплаты. Доступ 6 месяцев.">
+<meta name="description" content="Собери свой первый мультик на нейросетях: от идеи и героя до анимации, озвучки и монтажа. 12 уроков, старт сразу, доступ 6 месяцев. От 5 999 ₽.">
 <meta property="og:title" content="Мультик с нуля — курс ozhivi">
 <meta property="og:image" content="c13.jpg">
 <title>Мультик с нуля — курс ozhivi</title>
@@ -256,6 +256,80 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
   .bar .btn{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}.ticker .track{animation:none}}
+
+.copy-row{display:flex;gap:8px 12px;flex-wrap:wrap;align-items:center}
+.copy-sum{font:inherit;font-size:14px;text-decoration:underline;text-underline-offset:4px;border:0;background:transparent;color:var(--ink);cursor:pointer;padding:4px 0}
+#copy-status{font-size:13px;color:var(--muted)}
+/* Clear next steps from the free lesson to a finished film. */
+.hero{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:28px;padding-block:20px 52px}
+.hero h1{font-size:clamp(60px,7vw,84px)}
+.hero .script{font-size:clamp(34px,4vw,44px)}
+.hero .lead{font-size:18px;max-width:45ch;margin-block:20px}
+.hero .btn{padding:15px 24px;font-size:13px}
+
+section[id]{scroll-margin-top:24px}
+.hero-meta{font-weight:500;margin:0 0 24px;color:var(--ink)}
+.hero-link{font-size:15px;text-underline-offset:5px}
+.hero-preview{margin:0 auto;max-width:320px;width:100%;background:var(--surface);padding:14px;border-radius:28px;box-shadow:var(--shadow);transform:rotate(2deg)}
+.preview-label{display:block;font-family:var(--script);font-size:24px;color:var(--pink);padding:2px 6px 12px;text-align:center}
+.hero-preview video{display:block;width:100%;aspect-ratio:9/12;object-fit:cover;border-radius:17px;background:var(--night)}
+.hero-preview figcaption{font-size:14px;line-height:1.5;color:var(--muted);padding:14px 6px 3px}
+.section-intro{max-width:65ch;color:var(--muted);font-size:18px;margin:24px 0 0}
+.bridge{border-bottom:1px solid var(--line)}
+.path-cards{list-style:none;padding:0;margin:32px 0 24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.path-cards li{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:24px}
+.step-number{display:block;font-size:14px;letter-spacing:.15em;color:var(--pink);margin-bottom:20px}
+.path-cards h3{font-size:29px;line-height:1.12}
+.path-cards p{font-size:16px;color:var(--muted);margin:14px 0 0}
+.bridge-note{color:var(--muted);max-width:65ch;margin:0 0 26px}
+.tariff-for{font-size:16px;line-height:1.5;color:var(--muted);margin:0;min-height:5em}
+.tariff.vip .tariff-for{color:#c9c9d0}
+.tariff-label{align-self:start;font-size:12px;line-height:1.4;letter-spacing:.03em;color:var(--pink);font-weight:500}
+.result li{grid-template-columns:minmax(80px,110px) 1fr}
+.result li b{font-size:clamp(28px,4vw,40px)}
+.note p{margin:10px 0}
+.budget-link{text-underline-offset:4px;font-weight:500}
+body.modal-open{overflow:hidden}
+.sheet{max-height:calc(100dvh - 40px);overflow-y:auto}
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;gap:32px;padding-top:12px}
+  .hero h1{margin-top:16px;font-size:clamp(56px,12vw,100px)}
+  .hero-preview{max-width:360px;transform:none}
+  .path-cards{grid-template-columns:1fr}
+  .path-cards li{padding:24px}
+  .tariff-for{min-height:0}
+}
+@media(max-width:480px){
+  .hero .lead{font-size:18px;margin-block:22px}
+  .hero .cta-row{gap:18px 12px}
+  .hero .cta-row .btn{width:100%;text-align:center}
+  .hero-preview{max-width:300px}
+  .hero-preview video{aspect-ratio:9/10}
+  .hero .script{font-size:36px}
+  .fact{padding-left:12px}
+  .fact span{letter-spacing:.08em}
+  .result{padding:24px}
+  .result li{grid-template-columns:82px 1fr;gap:12px}
+  .dock{gap:10px}
+  .dock .t b{font-size:18px;margin-left:4px}
+  .dock .btn{font-size:11px;padding:11px 14px}
+}
+
+
+.budget-box{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:clamp(22px,4vw,36px)}
+.budget-box h3{font-size:clamp(28px,4vw,40px);max-width:25ch}
+.budget-box>p{max-width:70ch}
+.budget-list{list-style:none;margin:24px 0;padding:0}
+.budget-list li{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.budget-list b{font-weight:500}
+.budget-list small,.budget-price a{display:block;font-size:14px;color:var(--muted);margin-top:4px;line-height:1.5}
+.budget-price{text-align:right;white-space:nowrap;font-weight:500}
+.budget-price a{font-weight:400;text-underline-offset:4px}
+.budget-total{font-size:20px}
+.budget-total strong{color:var(--pink);font-weight:600}
+.budget-footnote{font-size:14px;line-height:1.6;color:var(--muted)}
+@media(max-width:480px){.budget-list li{flex-direction:column;gap:8px}.budget-price{text-align:left}}
+
 </style>
 
 </head>
@@ -266,7 +340,7 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
       <span class="logo">ozhiv<span class="i"></span></span>
       <small>оживи свою идею</small>
     </a>
-    <a class="btn ghost" href="#tariffs">Записаться</a>
+    <a class="btn ghost" href="#tariffs">Тарифы и участие</a>
   </header>
 
   <main id="top">
@@ -274,22 +348,20 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
       <div>
         <span class="sticker">старт сразу после оплаты</span>
         <h1>Мультик<br>с нуля</h1>
-        <span class="script">от идеи до ролика</span>
-        <p class="lead">За 3 недели соберёшь свой мультик на 30–60 секунд: нейросети, агенты-помощники, сценарий, герой, кадры, анимация, голос и монтаж.</p>
+        <span class="script">оживи свою историю</span>
+        <p class="lead">Собери свой первый мультик на 30–60 секунд: с узнаваемым героем, движением и голосом. Повторяй за мной на своей истории, от идеи до монтажа.</p>
+        <p class="hero-meta">С нуля · 12 уроков · от 5 999 ₽</p>
         <div class="cta-row">
-          <a class="btn" href="#tariffs">Хочу на курс</a>
-          <a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a>
-          <small>оплатил и сразу учишься · рисовать не нужно · оплата со всего мира · доступ 6 месяцев</small>
+          <a class="btn" href="#tariffs">Выбрать обучение</a>
+          <a class="hero-link" href="#program">Посмотреть программу ↓</a>
+          <small>Начни сразу после оплаты. Рисовать не нужно. Доступ к урокам 6 месяцев.</small>
         </div>
       </div>
-      <div class="collage">
-        <figure class="polaroid p1"><img src="n9.jpg" alt="Вязаный зелёный герой в розовом костюме и кроссовках" loading="eager"></figure>
-        <figure class="polaroid p2"><img src="n4.jpg" alt="Графичный плакатный портрет с красными губами" loading="eager"></figure>
-        <figure class="polaroid p3"><img src="c13.jpg" alt="Героиня с красной причёской-сердцем" loading="eager"></figure>
-        <span class="spark" style="right:2%;top:5%">✦</span>
-        <span class="spark" style="left:-2%;bottom:34%;font-size:24px">✦</span>
-        <span class="spark" style="right:6%;bottom:6%;font-size:26px">✦</span>
-      </div>
+      <figure class="hero-preview">
+        <span class="preview-label">Из кадра в живую сцену</span>
+        <video src="v3.mp4" poster="v3.jpg" controls muted loop playsinline preload="metadata" aria-label="Фрагмент мультфильма: пример анимации"></video>
+        <figcaption>Герой, эмоции, движение. На курсе разберём, как собрать собственную историю.</figcaption>
+      </figure>
     </div>
   </main>
 </div>
@@ -302,9 +374,10 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
 </div></div>
 
 <div class="wrap">
-  <section>
-    <p class="eyebrow">Так выглядит результат</p>
-    <h2>Мультики,<br><span class="script">сделанные нейросетями</span></h2>
+  <section id="examples">
+    <p class="eyebrow">Посмотри, что можно создавать</p>
+    <h2>От картинки<br><span class="script">к живой истории</span></h2>
+    <p class="section-intro">Фрагменты анимации в разных сценах. На курсе ты соберёшь свой ролик: с сюжетом, единым героем, озвучкой и монтажом.</p>
     <div class="reel">
       <div class="col"><figure class="clip h"><video src="v1.mp4" poster="v1.jpg" muted loop playsinline preload="metadata"></video><figcaption>кафе</figcaption></figure><figure class="clip h"><video src="h2.mp4" poster="h2.jpg" muted loop playsinline preload="metadata"></video><figcaption>дворец</figcaption></figure></div>
       <div class="col"><figure class="clip v"><video src="v2.mp4" poster="v2.jpg" muted loop playsinline preload="metadata"></video><figcaption>у стены</figcaption></figure></div>
@@ -318,11 +391,24 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
   </section>
 
   <div class="facts">
-    <div class="fact"><b>3</b><span>недели</span></div>
+    <div class="fact"><b>3</b><span>недели по программе</span></div>
     <div class="fact"><b>12</b><span>уроков</span></div>
-    <div class="fact"><b>3</b><span>живых эфира</span></div>
+    <div class="fact"><b>1</b><span>свой мультик</span></div>
     <div class="fact"><b>6</b><span>месяцев доступа</span></div>
   </div>
+
+  <section class="bridge" aria-labelledby="bridge-title">
+    <p class="eyebrow">После гайда и мини-урока</p>
+    <h2 id="bridge-title">Есть идея.<br><span class="script">Как превратить её в мультик?</span></h2>
+    <p class="section-intro">В бесплатном уроке мы делаем основу: идею, сценарий и план сцен. В курсе проходим следующие шаги и собираем их в законченный ролик.</p>
+    <ol class="path-cards">
+      <li><span class="step-number">01</span><h3>Герой и кадры</h3><p>Выбираешь стиль, создаёшь героя и учишься сохранять его внешность в разных сценах.</p></li>
+      <li><span class="step-number">02</span><h3>Движение и голос</h3><p>Оживляешь кадры: задаёшь действие, эмоции и камеру. Добавляешь реплики и интонации.</p></li>
+      <li><span class="step-number">03</span><h3>Готовая история</h3><p>Соединяешь сцены, озвучку и музыку в CapCut. Получаешь ролик, который можно опубликовать.</p></li>
+    </ol>
+    <p class="bridge-note">Если пока нет ни идеи, ни опыта в нейросетях, начни с первых уроков: они входят во все тарифы.</p>
+    <a class="btn" href="#tariffs">Выбрать свой формат</a>
+  </section>
 
   <section>
     <div class="two">
@@ -340,10 +426,10 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
       </div>
       <aside class="result">
         <p class="eyebrow">На выходе</p>
-        <h3>Ты уходишь с этим</h3>
+        <h3>Что соберёшь на практике</h3>
         <ul>
           <li><b>1</b><span>готовый мультик на 30–60 секунд</span></li>
-          <li><b>2–3</b><span>работы в портфолио</span></li>
+          <li><b>Герой</b><span>и кадры в выбранном тобой стиле</span></li>
           <li><b>30</b><span>дней: понятный план, что делать дальше</span></li>
         </ul>
       </aside>
@@ -372,7 +458,8 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
 
   <section id="program">
     <p class="eyebrow">Программа</p>
-    <h2>3 недели<br><span class="script">12 уроков</span></h2>
+    <h2>12 уроков<br><span class="script">до готового ролика</span></h2>
+    <p class="section-intro">Программа рассчитана на 3 недели. Видеоуроки доступны 6 месяцев: смотри частями и проходи практику в своём темпе.</p>
     <div class="weeks">
       <article class="week first">
         <div><span class="wk">Неделя 1</span><h3>Старт</h3><span class="tag">нейросети, агенты, идея</span></div>
@@ -383,7 +470,7 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
             <li><span class="n">03</span><div><strong>Идея и сценарий</strong><span class="d">превращаем мысль в историю на 30–60 секунд</span></div></li>
             <li><span class="n">04</span><div><strong>Раскадровка</strong><span class="d">разбиваем сценарий на кадры, пока ничего не сгенерировано</span></div></li>
           </ol>
-          <div class="live"><i></i>Эфир недели: разбор идей и сценариев <span class="badge">только с обратной связью</span></div>
+          <div class="live"><i></i>Практика: идея, сценарий и раскадровка своего мультика</div>
         </div>
       </article>
       <article class="week">
@@ -395,7 +482,7 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
             <li><span class="n">07</span><div><strong>Кадры</strong><span class="d">генерируем сцены в Midjourney, правим героев в Nano Banana</span></div></li>
             <li><span class="n">08</span><div><strong>Анимация кадров</strong><span class="d">оживляем картинки в Seedance: действие, эмоция, камера</span></div></li>
           </ol>
-          <div class="live"><i></i>Эфир недели: разбор героев и анимации</div>
+          <div class="live"><i></i>Практика: герой, кадры и анимация</div>
         </div>
       </article>
       <article class="week">
@@ -407,7 +494,7 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
             <li><span class="n">11</span><div><strong>Монтаж</strong><span class="d">собираем сцены, голос и музыку в один ролик в CapCut</span></div></li>
             <li><span class="n">12</span><div><strong>Публикация и план на 30 дней</strong><span class="d">куда выложить и что делать после курса</span></div></li>
           </ol>
-          <div class="live"><i></i>Эфир недели: просмотр готовых мультиков</div>
+          <div class="live"><i></i>Практика: сборка и публикация своего мультика</div>
         </div>
       </article>
     </div>
@@ -417,9 +504,9 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
     <p class="eyebrow">Как проходит</p>
     <h2>Видео и <span class="script">комьюнити</span></h2>
     <div class="cards">
-      <div class="card"><h3>Видеоуроки</h3><p>Подробные уроки с разбором каждого шага. Смотришь в своём темпе, можно по частям, и сразу повторяешь на своём герое. Доступ к урокам 6 месяцев.</p></div>
+      <div class="card"><h3>Уроки в записи</h3><p>В среднем 40 минут на урок. Смотри частями и повторяй на своём герое. На практику закладывай 1–1,5 часа в день. Доступ к урокам 6 месяцев.</p></div>
       <div class="card"><h3>Креативное комьюнити</h3><p>Общий чат единомышленников: показываешь кадры, задаёшь вопросы, вдохновляешься чужими работами и находишь своих.</p></div>
-      <div class="card"><h3>Живые эфиры</h3><p>Раз в неделю встречаемся в эфире. Разбор идей и сценариев доступен на тарифах с обратной связью.</p></div>
+      <div class="card"><h3>2 месяца поддержки</h3><p>На тарифах с обратной связью я лично проверяю домашние задания и отвечаю на вопросы в течение двух месяцев после начала обучения. Программа идёт 3 недели, а поддержка продолжается и после неё.</p></div>
     </div>
   </section>
 
@@ -427,14 +514,23 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
     <p class="eyebrow">Инструменты</p>
     <h2>Что <span class="script">понадобится</span></h2>
     <div class="tools">
-      <div class="tool"><b>ChatGPT или Claude</b><span>идея, сценарий, раскадровка, промпты, агенты</span></div>
-      <div class="tool"><b>Midjourney</b><span>кадры</span></div>
-      <div class="tool"><b>Nano Banana</b><span>правки героев</span></div>
-      <div class="tool"><b>Seedance</b><span>анимация кадров</span></div>
-      <div class="tool"><b>Fish Audio</b><span>голос и интонации</span></div>
-      <div class="tool"><b>CapCut</b><span>монтаж, музыка, титры</span></div>
+      <div class="tool"><b>ChatGPT</b><span>Официальный сервис: идея, сценарий, раскадровка и помощники.</span></div>
+      <div class="tool"><b>Midjourney</b><span>Официальный сервис: визуальный стиль, персонажи и кадры.</span></div>
+      <div class="tool"><b>Givon AI</b><span>Агрегатор: правки персонажей, видео и постпродакшн.</span></div>
     </div>
-    <p class="note"><strong>Инструменты меняются быстро.</strong> На курсе учим принципу, а не кнопкам. Тарифы и лимиты сервисов проверяй в их актуальной версии.</p>
+    <div class="budget-box" aria-labelledby="budget-title">
+      <p class="eyebrow">Расходы на инструменты</p>
+      <h3 id="budget-title">Сколько заложить на первый месяц</h3>
+      <p>Подписки оплачиваются отдельно от курса. Для начала можно ориентироваться на такую связку:</p>
+      <ul class="budget-list">
+        <li><span><b>ChatGPT Plus</b><small>Для сценариев и помощников</small></span><span class="budget-price">$20 / месяц<a href="https://chatgpt.com/pricing/" target="_blank" rel="noopener">Тарифы ChatGPT ↗</a></span></li>
+        <li><span><b>Midjourney Basic</b><small>Начальный тариф, объём генераций ограничен</small></span><span class="budget-price">$10 / месяц<a href="https://docs.midjourney.com/hc/en-us/articles/27870484040333-Comparing-Midjourney-Plans" target="_blank" rel="noopener">Тарифы Midjourney ↗</a></span></li>
+        <li><span><b>Givon AI Creator</b><small>900 токенов на генерации в месяц</small></span><span class="budget-price">2 490 ₽ / месяц<a href="https://givon.ai/ru/pricing" target="_blank" rel="noopener">Тарифы Givon AI ↗</a></span></li>
+      </ul>
+      <p class="budget-total">Ориентир: <strong>$30 + 2 490 ₽</strong> за первый месяц сервисов.</p>
+      <p class="budget-footnote">Цены проверены 3 ноября 2026 года. Сумма в рублях зависит от курса валют, налогов и способа оплаты. При большом количестве попыток могут понадобиться дополнительные токены или тариф Midjourney Standard ($30 в месяц). Это ориентир расходов, а не фиксированная стоимость создания мультика.</p>
+      <p class="budget-footnote">Если у тебя уже есть нужные подписки, повторно покупать их не нужно. Монтаж собираем в CapCut. Перед оплатой сервисов проверь актуальные условия по ссылкам выше.</p>
+    </div>
   </section>
 
   <section id="tariffs">
@@ -444,36 +540,40 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
       <span class="sticker">старт сразу после оплаты</span>
       <span class="sticker world">оплата со всего мира</span>
     </div>
-    <p class="hint" style="margin:18px 0 0">Оплатил, и сразу открывается доступ: начинаешь учиться в тот же день. Во всех тарифах доступ к урокам 6 месяцев</p>
+    <p class="hint" style="margin:18px 0 0">Во всех тарифах одна программа и доступ к урокам на 6 месяцев. Выбирай по тому, какая помощь нужна тебе на практике.</p>
     <div class="tariffs">
       <div class="tariff">
         <h3>Самостоятельный</h3>
+        <p class="tariff-for">Для тех, кто хочет повторять по урокам и разбираться самостоятельно.</p>
         <div class="price"><span>5 999</span><small>₽</small></div>
         <ul>
           <li>Все видеоуроки курса</li>
           <li>Доступ к урокам 6 месяцев</li>
           <li>Обучение в своём темпе</li>
-          <li>Без домашних заданий и проверки работ</li>
+          <li>Самостоятельная практика без проверки работ</li>
         </ul>
         <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="Самостоятельный" data-price="5 999">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
       </div>
       <div class="tariff mid">
+        <span class="tariff-label">Если нужна помощь в процессе</span>
         <h3>С обратной связью</h3>
+        <p class="tariff-for">Для тех, кому важно показать работу и получить мои комментарии.</p>
         <div class="price"><span>10 999</span><small>₽</small></div>
         <ul>
           <li>Всё из тарифа «Самостоятельный»</li>
           <li>Домашние задания по урокам</li>
           <li>Проверка домашних заданий лично автором курса</li>
-          <li>Эфир с разбором идей и сценариев</li>
+          <li>Личные ответы на вопросы в течение 2 месяцев</li>
         </ul>
         <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="С обратной связью" data-price="10 999">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
       </div>
       <div class="tariff vip">
         <h3>Личное сопровождение</h3>
+        <p class="tariff-for">Для тех, кто хочет индивидуально работать со мной над своим мультиком.</p>
         <div class="price">50 000<small>₽</small></div>
         <ul>
           <li>Всё из тарифа «С обратной связью»</li>
-          <li>Индивидуальное сопровождение на всём пути</li>
+          <li>Индивидуальное сопровождение в течение 2 месяцев</li>
           <li>Личная работа над твоим мультиком</li>
         </ul>
         <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="Личное сопровождение" data-price="50 000">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
@@ -486,12 +586,16 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
     <h2>Частые <span class="script">вопросы</span></h2>
     <div class="faq">
       <details><summary>Нужно ли уметь рисовать или монтировать?</summary><p>Нет. Курс идёт с нуля: от знакомства с нейросетями до готового ролика. Рисунок заменяют нейросети, а монтаж проходим в простом приложении CapCut.</p></details>
-      <details><summary>Сервисы платные?</summary><p>Часть сервисов работает по подписке. Какие тарифы нужны для твоего мультика, подскажем в первых уроках, чтобы не платить лишнего.</p></details>
+      <details><summary>Сервисы платные?</summary><p>Да. Мы используем официальный ChatGPT, официальный Midjourney и агрегатор Givon AI. Подписки и генерации оплачиваются отдельно от курса. Ориентир на первый месяц: $30 за ChatGPT Plus и Midjourney Basic, плюс 2 490 ₽ за Givon AI Creator. Расходы зависят от тарифов и числа генераций. Подробности и ссылки на актуальные цены есть в блоке «Что понадобится».</p></details>
       <details><summary>Что если сервис изменится во время курса?</summary><p>Основа не меняется: сценарий, раскадровка, единый герой, анимация, звук, монтаж. Если интерфейс поменялся, мы покажем, как сделать то же самое в новой версии.</p></details>
-      <details><summary>Что, если я пропущу эфир?</summary><p>Эфиры можно пересмотреть, а вопросы по ним задать в общем чате.</p></details>
-      <details><summary>Чем отличаются тарифы?</summary><p>«Самостоятельный» даёт видеоуроки без проверки работ. В «С обратной связью» есть домашние задания, и их лично проверяет автор курса. «Личное сопровождение» подразумевает индивидуальную работу над твоим мультиком.</p></details>
+      <details><summary>Нужно ли ждать старта группы?</summary><p>Нет. Курс проходит в записи. Доступ открывается после оплаты, начать можно сразу. Личная поддержка на тарифах с обратной связью действует 2 месяца после начала обучения.</p></details>
+      <details><summary>Сколько времени нужно в день?</summary><p>Урок длится в среднем 40 минут. На практику закладывай ещё 1–1,5 часа в день. Уроки можно смотреть частями, а программу проходить в своём темпе в пределах 6 месяцев доступа.</p></details>
+      <details><summary>Как долго можно задавать вопросы?</summary><p>На тарифах «С обратной связью» и «Личное сопровождение» Кристина лично отвечает на вопросы в течение 2 месяцев после начала обучения. На самостоятельном тарифе личная поддержка и проверка работ не предусмотрены. Доступ к видеоурокам на любом тарифе составляет 6 месяцев.</p></details>
+      <details><summary>Можно ли учиться дольше трёх недель?</summary><p>Да. Три недели: это план прохождения программы. Доступ к видеоурокам действует 6 месяцев, поэтому можно возвращаться к сложным шагам и проходить практику в своём темпе.</p></details>
+      <details><summary>Я уже прочитала гайд. Что даст курс?</summary><p>В гайде и бесплатном уроке ты знакомишься с процессом и готовишь основу истории. В курсе проходишь работу с инструментами на экране: создаёшь героя и кадры, сохраняешь его внешность, добавляешь движение, голос и собираешь ролик в CapCut.</p></details>
+      <details><summary>Чем отличаются тарифы?</summary><p>«Самостоятельный» даёт видеоуроки без проверки работ. В «С обратной связью» есть проверка домашних заданий и личные ответы Кристины на вопросы в течение 2 месяцев. «Личное сопровождение» добавляет индивидуальную работу над твоим мультиком в течение того же срока.</p></details>
       <details><summary>Сколько действует доступ к урокам?</summary><p>Доступ к урокам 6 месяцев, на любом тарифе.</p></details>
-      <details><summary>Что будет в конце?</summary><p>Готовый мультик на 30–60 секунд, 2–3 работы для портфолио и план на 30 дней, чтобы не бросить после курса.</p></details>
+      <details><summary>Что будет в конце?</summary><p>Цель практики: собрать собственный мультик на 30–60 секунд, от сценария до монтажа. По пути создашь героя, кадры и анимированные сцены. В финале подготовишь план публикаций на 30 дней. Для результата нужно выполнять практические задания.</p></details>
     </div>
   </section>
 
@@ -518,15 +622,16 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
     <p class="eyebrow">Оплата</p>
     <h3 id="pay-title">Тариф</h3>
     <p class="sum" id="pay-sum"></p>
-    <p class="how">Выбери, откуда платишь. Из России откроется страница оплаты, в ней укажи сумму тарифа. Для оплаты из-за рубежа откроется Telegram, и я пришлю реквизиты.</p>
-    <a class="opt" id="pay-ru" href="https://ozhivi-svoyu-ideyu.payform.ru" target="_blank" rel="noopener"><b>Я из России</b><span>оплата российской картой, в рублях</span></a>
-    <a class="opt" id="pay-world" href="https://t.me/iskor_kris" target="_blank" rel="noopener"><b>Я не из России</b><span>оплата на зарубежную карту или криптой</span></a>
+    <div class="copy-row"><button class="copy-sum" id="copy-sum" type="button">Скопировать сумму</button><span id="copy-status" role="status" aria-live="polite"></span></div>
+    <p class="how">Выбери способ оплаты. На странице для российской карты вставь сумму, указанную выше. Для зарубежной оплаты откроется сообщение Кристине с выбранным тарифом: останется уточнить реквизиты.</p>
+    <a class="opt" id="pay-ru" href="https://ozhivi-svoyu-ideyu.payform.ru" target="_blank" rel="noopener"><b>Картой из России ↗</b><span>Откроется платёжная страница Prodamus</span></a>
+    <a class="opt" id="pay-world" href="https://t.me/iskor_kris" target="_blank" rel="noopener"><b>Оплата из другой страны ↗</b><span>Уточнить реквизиты у Кристины в Telegram</span></a>
   </div>
 </div>
 
 <div class="dock">
-  <span class="t"><b>Старт сразу после оплаты</b></span>
-  <a class="btn" href="#tariffs">Оплатить</a>
+  <span class="t">Курс <b>от 5 999 ₽</b></span>
+  <a class="btn" href="#tariffs">Выбрать тариф</a>
 </div>
 
 <script>
@@ -541,25 +646,55 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
 
   var pay=document.getElementById("pay");
   if(pay){
-    var close=function(){pay.hidden=true};
+    var lastTrigger=null, selectedAmount="";
+    var copyStatus=document.getElementById("copy-status");
+    var copyButton=document.getElementById("copy-sum");
+    var close=function(){
+      pay.hidden=true;
+      document.body.classList.remove("modal-open");
+      if(lastTrigger)lastTrigger.focus();
+    };
+    copyButton.addEventListener("click",async function(){
+      try{
+        if(!navigator.clipboard)throw new Error("Clipboard unavailable");
+        await navigator.clipboard.writeText(selectedAmount);
+        copyStatus.textContent="Скопировано: "+selectedAmount+" ₽";
+      }catch(error){
+        copyStatus.textContent="Введи сумму вручную: "+selectedAmount+" ₽";
+      }
+    });
     var tg=function(txt){return "https://t.me/iskor_kris?text="+encodeURIComponent(txt)};
     document.querySelectorAll(".btn.pay").forEach(function(b){
       b.addEventListener("click",function(e){
         e.preventDefault();
+        lastTrigger=b;
         var n=b.dataset.name,p=b.dataset.price;
+        selectedAmount=p.replace(/\s/g,"");
+        copyStatus.textContent="";
         document.getElementById("pay-title").textContent=n;
         document.getElementById("pay-sum").textContent="Сумма к оплате: "+p+" ₽";
         var base="Здравствуйте! Хочу оплатить курс «Мультик с нуля», тариф «"+n+"» ("+p+" ₽). ";
         document.getElementById("pay-world").href=tg(base+"Оплачиваю не из России.");
         pay.hidden=false;
+        document.body.classList.add("modal-open");
+        pay.querySelector(".close").focus();
       });
     });
     pay.addEventListener("click",function(e){if(e.target===pay)close()});
     pay.querySelector(".close").addEventListener("click",close);
-    document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
+    document.addEventListener("keydown",function(e){
+      if(pay.hidden)return;
+      if(e.key==="Escape"){e.preventDefault();close();return;}
+      if(e.key!=="Tab")return;
+      var items=pay.querySelectorAll("button:not([disabled]),a[href]");
+      var first=items[0],last=items[items.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+    });
   }
 
-  var vids=document.querySelectorAll("video");
+  var vids=document.querySelectorAll(".reel video");
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   if("IntersectionObserver" in window){
     var io=new IntersectionObserver(function(es){
       es.forEach(function(e){
