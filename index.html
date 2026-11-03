@@ -258,6 +258,7 @@ footer .tagline{font-family:var(--script);color:var(--pink);font-size:22px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}.ticker .track{animation:none}}
 
 .copy-row{display:flex;gap:8px 12px;flex-wrap:wrap;align-items:center}
+.copy-row[hidden]{display:none}
 .copy-sum{font:inherit;font-size:14px;text-decoration:underline;text-underline-offset:4px;border:0;background:transparent;color:var(--ink);cursor:pointer;padding:4px 0}
 #copy-status{font-size:13px;color:var(--muted)}
 /* Clear next steps from the free lesson to a finished film. */
@@ -627,6 +628,20 @@ body.modal-open{overflow:hidden}
 
   var pay=document.getElementById("pay");
   if(pay){
+    var guideLinks={
+      guide_mult:{name:"Мульт",url:"https://t.me/ozhivi_guide_bot?start=paymult"},
+      guide_scenario:{name:"Сценарий",url:"https://t.me/ozhivi_guide_bot?start=payscenario"}
+    };
+    var campaign=new URLSearchParams(window.location.search).get("utm_campaign");
+    var guideSource=Object.prototype.hasOwnProperty.call(guideLinks,campaign)?campaign:null;
+    try{
+      if(guideSource)sessionStorage.setItem("ozhivi_guide_source",guideSource);
+      else if(campaign)sessionStorage.removeItem("ozhivi_guide_source");
+      else if(!campaign){
+        var savedSource=sessionStorage.getItem("ozhivi_guide_source");
+        if(Object.prototype.hasOwnProperty.call(guideLinks,savedSource))guideSource=savedSource;
+      }
+    }catch(error){}
     var lastTrigger=null, selectedAmount="";
     var copyStatus=document.getElementById("copy-status");
     var copyButton=document.getElementById("copy-sum");
@@ -655,6 +670,15 @@ body.modal-open{overflow:hidden}
         document.getElementById("pay-title").textContent=n;
         document.getElementById("pay-sum").textContent="Сумма к оплате: "+p+" ₽";
         var base="Здравствуйте! Хочу оплатить курс «Мультик с нуля», тариф «"+n+"» ("+p+" ₽). ";
+        var guide=guideSource?guideLinks[guideSource]:null;
+        if(guide)base+="Пришла из гайда «"+guide.name+"». ";
+        var ru=document.getElementById("pay-ru");
+        ru.href=guide?guide.url:"https://ozhivi-svoyu-ideyu.payform.ru";
+        ru.querySelector("span").textContent=guide?"Бот откроет оплату с готовой суммой":"Откроется платёжная страница Prodamus";
+        pay.querySelector(".copy-row").hidden=!!guide;
+        pay.querySelector(".how").textContent=guide
+          ?"Для оплаты российской картой открой бота, нажми «Начать» и выбери тариф «"+n+"». Продамус откроется с готовой суммой. Для оплаты из другой страны напиши Кристине по кнопке ниже."
+          :"Выбери способ оплаты. На странице для российской карты вставь сумму, указанную выше. Для зарубежной оплаты откроется сообщение Кристине с выбранным тарифом: останется уточнить реквизиты.";
         document.getElementById("pay-world").href=tg(base+"Оплачиваю не из России.");
         pay.hidden=false;
         document.body.classList.add("modal-open");
@@ -667,7 +691,7 @@ body.modal-open{overflow:hidden}
       if(pay.hidden)return;
       if(e.key==="Escape"){e.preventDefault();close();return;}
       if(e.key!=="Tab")return;
-      var items=pay.querySelectorAll("button:not([disabled]),a[href]");
+      var items=Array.from(pay.querySelectorAll("button:not([disabled]),a[href]")).filter(function(el){return el.getClientRects().length>0});
       var first=items[0],last=items[items.length-1];
       if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
       else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
