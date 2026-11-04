@@ -605,7 +605,7 @@ body.modal-open{overflow:hidden}
     <h3 id="pay-title">Тариф</h3>
     <p class="sum" id="pay-sum"></p>
     <div class="copy-row"><button class="copy-sum" id="copy-sum" type="button">Скопировать сумму</button><span id="copy-status" role="status" aria-live="polite"></span></div>
-    <p class="how">Выбери способ оплаты. На странице для российской карты вставь сумму, указанную выше. Для зарубежной оплаты откроется сообщение Кристине с выбранным тарифом: останется уточнить реквизиты.</p>
+    <p class="how">Выбери способ оплаты. Для российской карты откроется Продамус с выбранным тарифом и готовой суммой. Для оплаты из другой страны напиши Кристине по кнопке ниже.</p>
     <a class="opt" id="pay-ru" href="https://ozhivi-svoyu-ideyu.payform.ru" target="_blank" rel="noopener"><b>Картой из России ↗</b><span>Откроется платёжная страница Prodamus</span></a>
     <a class="opt" id="pay-world" href="https://t.me/iskor_kris" target="_blank" rel="noopener"><b>Оплата из другой страны ↗</b><span>Уточнить реквизиты у Кристины в Telegram</span></a>
   </div>
@@ -642,6 +642,11 @@ body.modal-open{overflow:hidden}
         if(Object.prototype.hasOwnProperty.call(guideLinks,savedSource))guideSource=savedSource;
       }
     }catch(error){}
+    var tariffPaymentLinks={
+      "5999":"https://link.payform.ru/?paymentLinkId=e14be659-2854-4e26-b407-d83696f1b7d8",
+      "10999":"https://link.payform.ru/?paymentLinkId=499e66ea-f031-4166-8d17-374749995a9a",
+      "50000":"https://link.payform.ru/?paymentLinkId=0a0e7d0e-e872-4422-9381-2a184c95d630"
+    };
     var lastTrigger=null, selectedAmount="";
     var copyStatus=document.getElementById("copy-status");
     var copyButton=document.getElementById("copy-sum");
@@ -673,12 +678,12 @@ body.modal-open{overflow:hidden}
         var guide=guideSource?guideLinks[guideSource]:null;
         if(guide)base+="Пришла из гайда «"+guide.name+"». ";
         var ru=document.getElementById("pay-ru");
-        ru.href=guide?guide.url:"https://ozhivi-svoyu-ideyu.payform.ru";
+        ru.href=guide?guide.url:tariffPaymentLinks[selectedAmount];
         ru.querySelector("span").textContent=guide?"Бот откроет оплату с готовой суммой":"Откроется платёжная страница Prodamus";
-        pay.querySelector(".copy-row").hidden=!!guide;
+        pay.querySelector(".copy-row").hidden=true;
         pay.querySelector(".how").textContent=guide
           ?"Для оплаты российской картой открой бота, нажми «Начать» и выбери тариф «"+n+"». Продамус откроется с готовой суммой. Для оплаты из другой страны напиши Кристине по кнопке ниже."
-          :"Выбери способ оплаты. На странице для российской карты вставь сумму, указанную выше. Для зарубежной оплаты откроется сообщение Кристине с выбранным тарифом: останется уточнить реквизиты.";
+          :"Выбери способ оплаты. Для российской карты откроется Продамус с выбранным тарифом и готовой суммой. Для оплаты из другой страны напиши Кристине по кнопке ниже.";
         document.getElementById("pay-world").href=tg(base+"Оплачиваю не из России.");
         pay.hidden=false;
         document.body.classList.add("modal-open");
