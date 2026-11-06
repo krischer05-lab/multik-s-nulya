@@ -534,7 +534,7 @@ body.modal-open{overflow:hidden}
           <li>Обучение в своём темпе</li>
           <li>Самостоятельная практика без проверки работ</li>
         </ul>
-        <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="Самостоятельный" data-price="5 999">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
+        <div class="actions"><a class="btn pay" href="https://link.payform.ru/?paymentLinkId=e14be659-2854-4e26-b407-d83696f1b7d8" target="_blank" rel="noopener" data-name="Самостоятельный" data-price="5 999">Оплатить картой</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
       </div>
       <div class="tariff mid">
         <span class="tariff-label">Если нужна помощь в процессе</span>
@@ -547,7 +547,7 @@ body.modal-open{overflow:hidden}
           <li>Проверка домашних заданий лично автором курса</li>
           <li>Личные ответы на вопросы в течение 2 месяцев</li>
         </ul>
-        <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="С обратной связью" data-price="10 999">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
+        <div class="actions"><a class="btn pay" href="https://link.payform.ru/?paymentLinkId=499e66ea-f031-4166-8d17-374749995a9a" target="_blank" rel="noopener" data-name="С обратной связью" data-price="10 999">Оплатить картой</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
       </div>
       <div class="tariff vip">
         <h3>Личное сопровождение</h3>
@@ -558,7 +558,7 @@ body.modal-open{overflow:hidden}
           <li>Индивидуальное сопровождение в течение 3 недель</li>
           <li>Личные ответы на вопросы в течение 2 месяцев</li>
         </ul>
-        <div class="actions"><a class="btn pay" href="https://t.me/iskor_kris" target="_blank" rel="noopener" data-name="Личное сопровождение" data-price="50 000">Оплатить</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
+        <div class="actions"><a class="btn pay" href="https://link.payform.ru/?paymentLinkId=0a0e7d0e-e872-4422-9381-2a184c95d630" target="_blank" rel="noopener" data-name="Личное сопровождение" data-price="50 000">Оплатить картой</a><a class="btn ask" href="https://t.me/iskor_kris" target="_blank" rel="noopener">Задать вопрос</a></div>
       </div>
     </div>
   </section>
@@ -605,9 +605,9 @@ body.modal-open{overflow:hidden}
     <h3 id="pay-title">Тариф</h3>
     <p class="sum" id="pay-sum"></p>
     <div class="copy-row"><button class="copy-sum" id="copy-sum" type="button">Скопировать сумму</button><span id="copy-status" role="status" aria-live="polite"></span></div>
-    <p class="how">Выбери способ оплаты. Для российской карты откроется Продамус с выбранным тарифом и готовой суммой. Для оплаты из другой страны напиши Кристине по кнопке ниже.</p>
-    <a class="opt" id="pay-ru" href="https://ozhivi-svoyu-ideyu.payform.ru" target="_blank" rel="noopener"><b>Картой из России ↗</b><span>Откроется платёжная страница Prodamus</span></a>
-    <a class="opt" id="pay-world" href="https://t.me/iskor_kris" target="_blank" rel="noopener"><b>Оплата из другой страны ↗</b><span>Уточнить реквизиты у Кристины в Telegram</span></a>
+    <p class="how">Откроется страница оплаты с выбранным тарифом и готовой суммой. Выбери удобный способ оплаты и следуй подсказкам.</p>
+    <a class="opt" id="pay-checkout" href="https://ozhivi-svoyu-ideyu.payform.ru" target="_blank" rel="noopener"><b>Оплатить картой ↗</b><span>Откроется платёжная страница Prodamus</span></a>
+    <p class="how">* Оплата картами российских и зарубежных банков.</p>
   </div>
 </div>
 
@@ -664,7 +664,6 @@ body.modal-open{overflow:hidden}
         copyStatus.textContent="Введи сумму вручную: "+selectedAmount+" ₽";
       }
     });
-    var tg=function(txt){return "https://t.me/iskor_kris?text="+encodeURIComponent(txt)};
     document.querySelectorAll(".btn.pay").forEach(function(b){
       b.addEventListener("click",function(e){
         e.preventDefault();
@@ -674,17 +673,14 @@ body.modal-open{overflow:hidden}
         copyStatus.textContent="";
         document.getElementById("pay-title").textContent=n;
         document.getElementById("pay-sum").textContent="Сумма к оплате: "+p+" ₽";
-        var base="Здравствуйте! Хочу оплатить курс «Мультик с нуля», тариф «"+n+"» ("+p+" ₽). ";
         var guide=guideSource?guideLinks[guideSource]:null;
-        if(guide)base+="Пришла из гайда «"+guide.name+"». ";
-        var ru=document.getElementById("pay-ru");
-        ru.href=guide?guide.url:tariffPaymentLinks[selectedAmount];
-        ru.querySelector("span").textContent=guide?"Бот откроет оплату с готовой суммой":"Откроется платёжная страница Prodamus";
+        var checkout=document.getElementById("pay-checkout");
+        checkout.href=guide?guide.url:tariffPaymentLinks[selectedAmount];
+        checkout.querySelector("span").textContent=guide?"Бот откроет оплату с готовой суммой":"Откроется платёжная страница Prodamus";
         pay.querySelector(".copy-row").hidden=true;
         pay.querySelector(".how").textContent=guide
-          ?"Для оплаты российской картой открой бота, нажми «Начать» и выбери тариф «"+n+"». Продамус откроется с готовой суммой. Для оплаты из другой страны напиши Кристине по кнопке ниже."
-          :"Выбери способ оплаты. Для российской карты откроется Продамус с выбранным тарифом и готовой суммой. Для оплаты из другой страны напиши Кристине по кнопке ниже.";
-        document.getElementById("pay-world").href=tg(base+"Оплачиваю не из России.");
+          ?"Открой бота, нажми «Начать» и выбери тариф «"+n+"». Откроется страница оплаты с готовой суммой."
+          :"Откроется страница оплаты с выбранным тарифом и готовой суммой. Выбери удобный способ оплаты и следуй подсказкам.";
         pay.hidden=false;
         document.body.classList.add("modal-open");
         pay.querySelector(".close").focus();
