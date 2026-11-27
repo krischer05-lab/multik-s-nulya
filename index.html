@@ -638,18 +638,24 @@ body.modal-open{overflow:hidden}
 
   var pay=document.getElementById("pay");
   if(pay){
-    var guideLinks={
-      guide_mult:{name:"Мульт",url:"https://t.me/ozhivi_guide_bot?start=paymult"},
-      guide_scenario:{name:"Сценарий",url:"https://t.me/ozhivi_guide_bot?start=payscenario"}
+    var campaignPaymentLinks={
+      guide_mult:{"5999":"https://link.payform.ru/?paymentLinkId=25fcfb85-df69-4a00-a0eb-b06bea5b22d3","10999":"https://link.payform.ru/?paymentLinkId=9c5304b8-1317-433a-be86-ca030122957e","50000":"https://link.payform.ru/?paymentLinkId=be707d88-bd89-49e8-9216-150af14473fa"},
+      guide_scenario:{"5999":"https://link.payform.ru/?paymentLinkId=6a16daef-0613-45de-a2c7-db68fcbb7f57","10999":"https://link.payform.ru/?paymentLinkId=ea0c643d-9f8b-4740-a8aa-03b66a8c602b","50000":"https://link.payform.ru/?paymentLinkId=a9db33b6-fae9-4f95-95de-10f60505bbfe"},
+      guide_ozhivi:{"5999":"https://link.payform.ru/?paymentLinkId=96359e2a-044a-4936-9e0e-94b51e318da0","10999":"https://link.payform.ru/?paymentLinkId=5b3309c1-2759-45ff-a205-7228769abb2a","50000":"https://link.payform.ru/?paymentLinkId=fd0c6611-d7a6-4e4b-a519-9ea5feee7ad4"},
+      guide_raskadrovka:{"5999":"https://link.payform.ru/?paymentLinkId=934ca97a-39b5-4124-ba04-894e92daca6e","10999":"https://link.payform.ru/?paymentLinkId=d31035b7-7db3-4aee-a600-9503dcf43ed0","50000":"https://link.payform.ru/?paymentLinkId=2f3221aa-34e6-450a-b83e-bda14d163b6c"},
+      guide_style:{"5999":"https://link.payform.ru/?paymentLinkId=f0aed7f5-ef69-40f7-b551-439c9b8b9f09","10999":"https://link.payform.ru/?paymentLinkId=c552d638-c25e-4f8f-936b-88fc196ec3f6","50000":"https://link.payform.ru/?paymentLinkId=b6d4c22d-cc36-4d61-80fb-4cc86707883e"},
+      guide_bolvanka:{"5999":"https://link.payform.ru/?paymentLinkId=3aa7f5be-3bf6-4f80-b79b-ed6dc37c7446","10999":"https://link.payform.ru/?paymentLinkId=197828ae-bc7e-4eba-b18a-74cf4bbce39c","50000":"https://link.payform.ru/?paymentLinkId=ef2124e0-e9f9-4113-9c82-ccad2f8f25f3"},
+      guide_trend:{"5999":"https://link.payform.ru/?paymentLinkId=1c1ac1be-51c7-44d5-89e2-3dd06a54607e","10999":"https://link.payform.ru/?paymentLinkId=50e109da-5e86-4376-8860-9a37cddbec2b","50000":"https://link.payform.ru/?paymentLinkId=e757203d-5a54-4422-9e12-c37567b92d0c"},
+      guide_animation:{"5999":"https://link.payform.ru/?paymentLinkId=1ce21f0d-4942-4e7e-9a37-ba82651a11b8","10999":"https://link.payform.ru/?paymentLinkId=2214f976-0f74-4634-8ac2-f7eacd5b2a99","50000":"https://link.payform.ru/?paymentLinkId=9ba5375f-c779-47d8-99cc-b7fd2ff86b6d"}
     };
     var campaign=new URLSearchParams(window.location.search).get("utm_campaign");
-    var guideSource=Object.prototype.hasOwnProperty.call(guideLinks,campaign)?campaign:null;
+    var campaignSource=Object.prototype.hasOwnProperty.call(campaignPaymentLinks,campaign)?campaign:null;
     try{
-      if(guideSource)sessionStorage.setItem("ozhivi_guide_source",guideSource);
+      if(campaignSource)sessionStorage.setItem("ozhivi_guide_source",campaignSource);
       else if(campaign)sessionStorage.removeItem("ozhivi_guide_source");
       else if(!campaign){
         var savedSource=sessionStorage.getItem("ozhivi_guide_source");
-        if(Object.prototype.hasOwnProperty.call(guideLinks,savedSource))guideSource=savedSource;
+        if(Object.prototype.hasOwnProperty.call(campaignPaymentLinks,savedSource))campaignSource=savedSource;
       }
     }catch(error){}
     var tariffPaymentLinks={
@@ -657,6 +663,7 @@ body.modal-open{overflow:hidden}
       "10999":"https://link.payform.ru/?paymentLinkId=499e66ea-f031-4166-8d17-374749995a9a",
       "50000":"https://link.payform.ru/?paymentLinkId=0a0e7d0e-e872-4422-9381-2a184c95d630"
     };
+    var checkoutLinks=campaignSource?campaignPaymentLinks[campaignSource]:tariffPaymentLinks;
     var lastTrigger=null, selectedAmount="";
     var copyStatus=document.getElementById("copy-status");
     var copyButton=document.getElementById("copy-sum");
@@ -675,6 +682,8 @@ body.modal-open{overflow:hidden}
       }
     });
     document.querySelectorAll(".btn.pay").forEach(function(b){
+      var amount=b.dataset.price.replace(/\s/g,"");
+      b.href=checkoutLinks[amount];
       b.addEventListener("click",function(e){
         e.preventDefault();
         lastTrigger=b;
@@ -683,14 +692,10 @@ body.modal-open{overflow:hidden}
         copyStatus.textContent="";
         document.getElementById("pay-title").textContent=n;
         document.getElementById("pay-sum").textContent="Сумма к оплате: "+p+" ₽";
-        var guide=guideSource?guideLinks[guideSource]:null;
         var checkout=document.getElementById("pay-checkout");
-        checkout.href=guide?guide.url:tariffPaymentLinks[selectedAmount];
-        checkout.querySelector("span").textContent=guide?"Бот откроет оплату с готовой суммой":"Откроется платёжная страница Prodamus";
+        checkout.href=checkoutLinks[selectedAmount];
         pay.querySelector(".copy-row").hidden=true;
-        pay.querySelector(".how").textContent=guide
-          ?"Открой бота, нажми «Начать» и выбери тариф «"+n+"». Откроется страница оплаты с готовой суммой."
-          :"Откроется страница оплаты с выбранным тарифом и готовой суммой. Выбери удобный способ оплаты и следуй подсказкам.";
+        pay.querySelector(".how").textContent="Откроется страница оплаты с выбранным тарифом и готовой суммой. Выбери удобный способ оплаты и следуй подсказкам.";
         pay.hidden=false;
         document.body.classList.add("modal-open");
         pay.querySelector(".close").focus();
